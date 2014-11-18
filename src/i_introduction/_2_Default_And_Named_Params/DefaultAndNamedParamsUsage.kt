@@ -11,7 +11,10 @@ fun todoTask2_2() = TODO(
     """,
     references = { (collection: Collection<Int>) -> task1(collection); collection.joinToString() })
 
+fun <T> Iterable<T>.foo(separator: String = ", ", prefix: String = "{", postfix: String =  "}", limit: Int = -1, truncated: String = "..."): String {
+    return joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated).toString()
+}
+
 fun task2_2(collection: Collection<Int>): String {
-    todoTask2_2()
-    return collection.joinToString()
+    return (collection.foo())
 }
